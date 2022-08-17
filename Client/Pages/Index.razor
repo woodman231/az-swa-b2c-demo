@@ -7,3 +7,27 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<AuthorizeView>
+    <Authorized>
+        <dl>
+            <dt>Authentication Type</dt>
+            <dd>@context.User.Identity?.AuthenticationType</dd>
+
+            <dt>IsAuthenticated</dt>
+            <dd>@context.User.Identity?.IsAuthenticated</dd>
+
+            <dt>Name</dt>
+            <dd>@context.User.Identity?.Name</dd>
+
+            <dt>Claims</dt>
+            <dd>
+                <ul>
+                    @foreach(var claim in context.User.Claims) {
+                        <li><b>@claim.Type:</b> @claim.Value</li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </Authorized>
+</AuthorizeView>
