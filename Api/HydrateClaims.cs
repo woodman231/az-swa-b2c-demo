@@ -17,6 +17,8 @@ namespace Api
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
+            log.LogInformation("HydrateClaims Called");
+            
             // Check HTTP basic authorization
             if (!Authorize(req, log))
             {
