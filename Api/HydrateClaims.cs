@@ -18,7 +18,7 @@ namespace Api
             ILogger log)
         {
             log.LogInformation("HydrateClaims Called");
-            
+
             // Check HTTP basic authorization
             if (!Authorize(req, log))
             {
@@ -64,6 +64,8 @@ namespace Api
 
             // Read the authorization header
             var auth = req.Headers["Authorization"].ToString();
+
+            log.LogInformation($"auth: {auth}");
 
             // Ensure the type of the authorization header id `Basic`
             if (!auth.StartsWith("Basic "))
